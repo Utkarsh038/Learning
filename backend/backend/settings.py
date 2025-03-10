@@ -35,7 +35,7 @@ SECRET_KEY = "django-insecure-fh$$n()l&(qazc)0$dbsizqftyjaf9ce$k@y)6775x-p#k*9#b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['learning.onrender.com', 'localhost']
+ALLOWED_HOSTS = ['learning-ut03.onrender.com', 'localhost']
 
 
 # Application definition
