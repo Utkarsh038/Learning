@@ -9,11 +9,21 @@ https://docs.djangoproject.com/en/4.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.2/ref/settings/
 """
-
+import os
 from pathlib import Path
+import dj_database_url
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
+
+
+
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -25,7 +35,7 @@ SECRET_KEY = "django-insecure-fh$$n()l&(qazc)0$dbsizqftyjaf9ce$k@y)6775x-p#k*9#b
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['learning.onrender.com', 'localhost']
 
 
 # Application definition
@@ -90,16 +100,19 @@ WSGI_APPLICATION = "backend.wsgi.application"
 
 # Database Setup (PostgreSQL Recommended)
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'Learning',
-        'USER': 'Learning',
-        'PASSWORD': 'npg_VW1sCeQ2NFAI',
-        'HOST': 'ep-nameless-credit-a8gf2jhq-pooler.eastus2.azure.neon.tech',
-        'PORT': '5432',
-        'OPTIONS': {'sslmode': 'require'},
-    }
+    'default': dj_database_url.config(default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}")
 }
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'Learning',
+#         'USER': 'Learning',
+#         'PASSWORD': 'npg_VW1sCeQ2NFAI',
+#         'HOST': 'ep-nameless-credit-a8gf2jhq-pooler.eastus2.azure.neon.tech',
+#         'PORT': '5432',
+#         'OPTIONS': {'sslmode': 'require'},
+#     }
+# }
 # JWT Authentication
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (
@@ -158,9 +171,14 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-STATIC_URL = "static/"
+#STATIC_URL = "static/"
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+# Ensure whitenoise is installed for static file management
+INSTALLED_APPS.append('whitenoise.runserver_nostatic')
+MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
