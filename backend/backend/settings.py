@@ -112,7 +112,8 @@ REST_FRAMEWORK = {
 
 # CORS Setup
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:5173",  # React Frontend
+    "http://localhost:5173", 
+    'https://learning-seven-beryl.vercel.app/' # React Frontend
 ]
 
 # Django Channels (WebSockets)
@@ -172,3 +173,8 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 # Ensure whitenoise is installed for static file management
 INSTALLED_APPS.append('whitenoise.runserver_nostatic')
 MIDDLEWARE.insert(1, 'whitenoise.middleware.WhiteNoiseMiddleware')
+
+# INSTALLED_APPS += ['corsheaders']
+# MIDDLEWARE.insert(0, 'corsheaders.middleware.CorsMiddleware')
+# CORS_ALLOWED_ORIGINS = ['https://learning-seven-beryl.vercel.app/']
+
