@@ -113,7 +113,7 @@ REST_FRAMEWORK = {
 # CORS Setup
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173", 
-    'https://learning-seven-beryl.vercel.app/' # React Frontend
+    'https://learning-seven-beryl.vercel.app' # React Frontend
 ]
 
 # Django Channels (WebSockets)
