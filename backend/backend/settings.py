@@ -102,17 +102,7 @@ WSGI_APPLICATION = "backend.wsgi.application"
 DATABASES = {
     'default': dj_database_url.config(default=f"sqlite:///{os.path.join(BASE_DIR, 'db.sqlite3')}")
 }
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql',
-#         'NAME': 'Learning',
-#         'USER': 'Learning',
-#         'PASSWORD': 'npg_VW1sCeQ2NFAI',
-#         'HOST': 'ep-nameless-credit-a8gf2jhq-pooler.eastus2.azure.neon.tech',
-#         'PORT': '5432',
-#         'OPTIONS': {'sslmode': 'require'},
-#     }
-# }
+
 # JWT Authentication
 REST_FRAMEWORK = {
     "DEFAULT_AUTHENTICATION_CLASSES": (

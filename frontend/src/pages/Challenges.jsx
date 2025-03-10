@@ -13,7 +13,7 @@ const Challenges = () => {
   // Fetch challenges from backend
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/challenges/")
+      .get("https://learning-ut03.onrender.com/api/challenges/")
       .then((res) => {
         setChallenges(res.data);
         setLoading(false);
@@ -39,7 +39,7 @@ const Challenges = () => {
 
     setSubmitting(true);
     try {
-      const response = await axios.post("http://localhost:8000/api/submit/", {
+      const response = await axios.post("https://learning-ut03.onrender.com/api/submit/", {
         challenge_id: selectedChallenge.id,
         code,
       });

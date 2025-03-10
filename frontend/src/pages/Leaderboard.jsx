@@ -10,7 +10,7 @@ const Leaderboard = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:8000/api/leaderboard/leaderboard/")
+      .get("https://learning-ut03.onrender.com/api/leaderboard/leaderboard/")
       .then((res) => {
         if (res.data.weekly && res.data.monthly && res.data.allTime) {
           setLeaderboard(res.data);
